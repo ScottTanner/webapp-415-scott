@@ -2,10 +2,12 @@
   "name": "415-example",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://webapp-415-scott.herokuapp.com/",
   "scripts": {
     "test": "",
-    "run": "node server.js"
+    "start": "node emr.js"
   },
+  "license": "ISC",
   "dependencies": {
     "express": "^4.16.2"
   }

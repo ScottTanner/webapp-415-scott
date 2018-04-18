@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// initialize EMR default data set
 var jsonData=`{"emrs":[
             {"name":"Messi", "health":"Excellent"},
             {"name":"Ronaldo", "health":"Good"},
@@ -17,7 +16,6 @@ var jsonData=`{"emrs":[
             {"name":"Toquero", "health":"WishingHeWasDead"}]}`;
 
 var obj = JSON.parse(jsonData);
-
 console.log(obj.emrs.length);
 console.log(obj.emrs);
 
@@ -28,30 +26,27 @@ app.get('/rest/emr', function(req, res) {
 
   if(user_id)
   {
-   if(user_id == "*")
+   if(user_id=="*")
    {
       result = JSON.stringify(obj.emrs);
-      console.log("<<" + JSON.stringify(obj.emrs) + ">>");
+      console.log("<<"+JSON.stringify(obj.emrs)+">>");
    }
    else
    {
-    result = user_id + " Not Found.";
+    result = user_id+" Not Found.";
     for (i = 0; i < obj.emrs.length; i++)
     {
      console.log(obj.emrs[i].name);
      if((obj.emrs[i].name == user_id))
      {
       result = JSON.stringify(obj.emrs[i]);
-      console.log("<" + JSON.stringify(obj.emrs[i]) + ">");
+      console.log("<"+JSON.stringify(obj.emrs[i])+">");
      }
     }
    }
 
   console.log(result);
   res.send(result);
-
-  //if(result == "")
-  //  res.send(user_id + " Not Found ");
 
   }
   else
