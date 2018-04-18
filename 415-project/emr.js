@@ -18,7 +18,7 @@ var jsonData=`{"emrs":[
 var obj = JSON.parse(jsonData);
 
 //rest for 'restful' api
-app.get('/rest/emr', function(req, res) {
+app.get('/', function(req, res) {
   var user_id = req.param('id');
   var result = "";
 
@@ -49,7 +49,7 @@ app.get('/rest/emr', function(req, res) {
 });
 
 //rest for 'restful' api
-app.post('/rest/emr', function(req, res) {
+app.post('/', function(req, res) {
     var user_id = req.body.id;
     var name = req.body.name;
     var health = req.body.health;
