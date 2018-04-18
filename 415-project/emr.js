@@ -16,10 +16,8 @@ var jsonData=`{"emrs":[
             {"name":"Toquero", "health":"WishingHeWasDead"}]}`;
 
 var obj = JSON.parse(jsonData);
-console.log(obj.emrs.length);
-console.log(obj.emrs);
 
-// routes will go here
+//rest for 'restful' api
 app.get('/rest/emr', function(req, res) {
   var user_id = req.param('id');
   var result = "";
@@ -29,23 +27,19 @@ app.get('/rest/emr', function(req, res) {
    if(user_id=="*")
    {
       result = JSON.stringify(obj.emrs);
-      console.log("<<"+JSON.stringify(obj.emrs)+">>");
    }
    else
    {
     result = user_id+" Not Found.";
     for (i = 0; i < obj.emrs.length; i++)
     {
-     console.log(obj.emrs[i].name);
      if((obj.emrs[i].name == user_id))
      {
       result = JSON.stringify(obj.emrs[i]);
-      console.log("<"+JSON.stringify(obj.emrs[i])+">");
      }
     }
    }
 
-  console.log(result);
   res.send(result);
 
   }
@@ -54,18 +48,13 @@ app.get('/rest/emr', function(req, res) {
 
 });
 
+//rest for 'restful' api
 app.post('/rest/emr', function(req, res) {
     var user_id = req.body.id;
     var name = req.body.name;
     var health = req.body.health;
 
-    console.log(obj.emrs);
-
     obj.emrs.push({"name": name, "health": health});
-    console.log(obj.emrs);
-
-
-
     res.send(user_id + ' ' + name + ' ' + health);
 });
 
