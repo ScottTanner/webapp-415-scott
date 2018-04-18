@@ -17,6 +17,7 @@ var jsonData=`{"emrs":[
             {"name":"Toquero", "health":"WishingHeWasDead"}]}`;
 
 var obj = JSON.parse(jsonData);
+
 console.log(obj.emrs.length);
 console.log(obj.emrs);
 
@@ -27,21 +28,21 @@ app.get('/rest/emr', function(req, res) {
 
   if(user_id)
   {
-   if(user_id=="*")
+   if(user_id == "*")
    {
       result = JSON.stringify(obj.emrs);
-      console.log("<<"+JSON.stringify(obj.emrs)+">>");
+      console.log("<<" + JSON.stringify(obj.emrs) + ">>");
    }
    else
    {
-    result = user_id+" Not Found.";
+    result = user_id + " Not Found.";
     for (i = 0; i < obj.emrs.length; i++)
     {
      console.log(obj.emrs[i].name);
      if((obj.emrs[i].name == user_id))
      {
       result = JSON.stringify(obj.emrs[i]);
-      console.log("<"+JSON.stringify(obj.emrs[i])+">");
+      console.log("<" + JSON.stringify(obj.emrs[i]) + ">");
      }
     }
    }
@@ -58,7 +59,6 @@ app.get('/rest/emr', function(req, res) {
 
 });
 
-//.....................................................................
 app.post('/rest/emr', function(req, res) {
     var user_id = req.body.id;
     var name = req.body.name;
