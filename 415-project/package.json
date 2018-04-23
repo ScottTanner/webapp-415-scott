@@ -14,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node emr.js -p 3000"
+	"start": "set PORT=3000&& node emr.js start"
   },
   "engines": {
     "node": "8.10.0"
