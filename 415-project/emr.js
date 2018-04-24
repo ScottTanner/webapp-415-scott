@@ -90,4 +90,4 @@ app.post('/api/emr', function(req, res) {
 
 
 // start the server on the specified port
-app.listen(process.env.Port || 8080);
+app.listen(process.env.PORT || 8080);
